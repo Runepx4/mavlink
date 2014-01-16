@@ -686,7 +686,7 @@ class mavserial(mavfile):
         self.port.close()
         while True:
             try:
-                self.port = serial.Serial(self.device, self.baud, timeout=1,
+                self.port = serial.Serial(self.device, self.baud, timeout=0,
                                           dsrdtr=False, rtscts=False, xonxoff=False)
                 try:
                     self.fd = self.port.fileno()
@@ -939,7 +939,7 @@ def mavlink_connection(device, baud=115200, source_system=255,
     if device.startswith('udp:'):
         return mavudp(device[4:], input=input, source_system=source_system)
 
-    if device.endswith('.bin'):
+    if device.lower().endswith('.bin'):
         # support dataflash logs
         from pymavlink import DFReader
         m = DFReader.DFReader_binary(device)
