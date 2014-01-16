@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <mavlink>
 	<version>3</version>
-	<include>message_definitions\v1.0\common.xml</include>
+	<include>common.xml</include>
 	<enums>
 	</enums>
 	<messages>
